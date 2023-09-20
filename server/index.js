@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { app } from './app.js';
 import { initDataBase } from './database/index.js';
 
@@ -7,5 +8,5 @@ try {
     console.log(`server is running on http://localhost:${app.get('port')}`);
   });
 } catch (err) {
-  console.log('cannot connect to database');
+  console.log(`cannot connect to database: ${err}`);
 }
