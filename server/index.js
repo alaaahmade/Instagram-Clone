@@ -1,6 +1,12 @@
+/* eslint-disable no-console */
 import { app } from './app.js';
+import { initDataBase } from './database/index.js';
 
-app.listen(app.get('port'), () => {
-  // eslint-disable-next-line no-console
-  console.log(`Server is Running on http://localhost:${app.get('port')}`);
-});
+try {
+  await initDataBase();
+  app.listen(app.get('port'), () => {
+    console.log(`server is running on http://localhost:${app.get('port')}`);
+  });
+} catch (err) {
+  console.log(`cannot connect to database: ${err}`);
+}
